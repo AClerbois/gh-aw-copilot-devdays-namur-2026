@@ -23,10 +23,34 @@ Cette session explore **[GitHub Agentic Workflows](https://github.github.com/gh-
 
 ```
 .
+├── AGENTS.md                          # Contexte du projet pour les agents IA
 ├── slides/
 │   └── GitHub Copilot Dev Days - Agentic Workflows.pptx
-└── examples/             # à venir — exemples live de la session
+└── examples/                          # à venir — exemples live de la session
 ```
+
+> 💡 Le fichier `AGENTS.md` décrit le contexte du projet aux agents IA. Il est lui-même maintenu par un agentic workflow — c'est la mise en abyme de la session.
+
+---
+
+## Projet fictif de démo : Marabou 🍕
+
+Pour rendre les exemples concrets, la session s'appuie sur **Marabou** — un logiciel imaginaire de gestion de culte voué à la **Pizza Sacrée**. La communauté Marabou est organisée en fidèles, Prêtres Fromagers et un Grand Prêtre, gouvernée par le Dogme Fromager et la Liste Noire des Ingrédients Maudits (LNIM).
+
+Le repository contient un ensemble d'**issues fictives** (bugs et features) qui servent de données d'exemple pour les démonstrations de triage automatique, de labellisation et de rapports générés par des agentic workflows.
+
+| # | Type | Titre |
+|---|---|---|
+| 🐛 | Bug | La Roulette Sacrée retourne « calzone » le vendredi |
+| 🐛 | Bug | Compteur de dévots négatif après l'hérésie de l'ananas |
+| 🐛 | Bug | La cérémonie d'ouverture ne joue plus le chant grégorien |
+| 🐛 | Bug | Anti-hérésie aveugle aux pizzas à la crème fraîche |
+| ✨ | Feature | Calendrier liturgique des Saints Pizzas |
+| ✨ | Feature | Rituel de bénédiction de la mozzarella di bufala v2.0 |
+| ✨ | Feature | Mode « Jeûne Expiatoire » pour les pizzas brûlées |
+| ❓ | Question | Débat doctrinal — pâte fine : hérésie ou ascèse ? |
+
+> Le contexte complet du projet fictif est documenté dans [AGENTS.md](AGENTS.md).
 
 ---
 
