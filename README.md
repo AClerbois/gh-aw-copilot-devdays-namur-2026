@@ -233,6 +233,105 @@ safe-outputs:
 
 ---
 
+## Workflows dans ce repository
+
+Voici tous les agentic workflows présents dans ce repo et utilisés pendant la session :
+
+| Fichier | Pattern | Description |
+|---|---|---|
+| [`agents-md-maintainer.md`](.github/workflows/agents-md-maintainer.md) | DailyOps | Maintient le fichier `AGENTS.md` à jour via une PR hebdomadaire après analyse des PRs mergées |
+| [`daily-repo-status.md`](.github/workflows/daily-repo-status.md) | DailyOps | Génère un rapport quotidien d'activité du repo sous forme d'issue GitHub |
+| [`issue-triage.md`](.github/workflows/issue-triage.md) | IssueOps | Triage automatique des issues : classification, priorité, labels, détection de doublons |
+| [`champignon-detector.md`](.github/workflows/champignon-detector.md) | IssueOps / Monitoring | Surveille tout contenu textuel (issues, PRs, commentaires, discussions) et répond 🤮 dès qu'un champignon est détecté |
+
+---
+
+## Idées de cas fun par pattern
+
+Chaque pattern de GitHub Agentic Workflows peut être détourné de manière créative dans le contexte du projet **Marabou** (culte de la Pizza Sacrée). Voici des idées d'inspiration :
+
+### 🗣️ [ChatOps](https://github.github.com/gh-aw/patterns/chat-ops/)
+> *Déclencher des workflows via des commandes textuelles dans des commentaires*
+
+- `/bénir` — Vérifie la composition d'une pizza décrite dans une issue et déclare si elle est sacrée ou hérétique
+- `/excommunier @utilisateur` — Génère un décret d'excommunication liturgique formaté en markdown (_réservé aux Prêtres Fromagers_)
+- `/sacrer` — Évalue une PR : si le code ajoute un ingrédient à la whitelist, vérifie sa conformité dogmatique avant approbation
+
+### 📅 [DailyOps](https://github.github.com/gh-aw/patterns/daily-ops/)
+> *Automatismes quotidiens incrémentaux vers un grand objectif*
+
+- **Psaume quotidien** — Chaque matin, génère un psaume poétique en l'honneur de la pizza du jour dans une discussion épinglée
+- **Nettoyage des hérésies** — Chaque jour, scanne le code source et ouvre une PR pour remplacer les constantes `PINEAPPLE`, `KETCHUP`, `CREME_FRAICHE` par des références marquées `BANNED_INGREDIENT`
+- **Hagiographie automatique** — Publie chaque semaine un rapport sur le contributeur le plus actif avec un titre liturgique (`Saint Adrien des Pull Requests`)
+
+### 📊 [DataOps](https://github.github.com/gh-aw/patterns/data-ops/)
+> *Extraction déterministe + analyse IA sur des données*
+
+- **Index des ingrédients maudits** — Collecte toutes les mentions d'ingrédients dans les issues fermées et génère un rapport hebdomadaire sur les hérésies les plus fréquemment signalées
+- **Bilan liturgique mensuel** — Compile les stats de toutes les PRs mergées (nb de bugs corrigés, features sacrées, ingrédients bannis) et publie un compte-rendu au format évangile
+
+### 🚀 [DispatchOps](https://github.github.com/gh-aw/patterns/dispatch-ops/)
+> *Exécution manuelle à la demande avec paramètres*
+
+- **Générateur de recette** — `gh aw run sacred-pizza --raw-field style=romaine --raw-field occasion=fête` → génère une recette conforme au dogme avec bénédiction intégrée
+- **Audit doctrinal** — Déclenché manuellement, inspecte toutes les issues ouvertes et signale celles qui remettent en cause les fondements du Dogme Fromager
+
+### 🐛 [IssueOps](https://github.github.com/gh-aw/patterns/issue-ops/)
+> *Les issues déclenchent des réactions automatiques*
+
+- **Confessionnal automatique** — Quand une issue mentionne un ingrédient hérétique avec remords, l'agent répond avec une pénitence proportionnelle et ferme l'issue
+- **Détecteur de champignon** ✅ _(déjà dans ce repo)_ — Réagit avec 🤮 dès qu'un champignon est détecté dans n'importe quel texte
+
+### 🏷️ [LabelOps](https://github.github.com/gh-aw/patterns/label-ops/)
+> *Les labels déclenchent ou filtrent les workflows*
+
+- Label `needs-confession` → l'agent génère automatiquement une cérémonie d'expiation adaptée à la gravité hérétique
+- Label `requires-blessing` → l'agent compose une bénédiction pour la PR avant qu'un humain puisse la merger
+
+### 🗺️ [MultiRepoOps](https://github.github.com/gh-aw/patterns/multi-repo-ops/) / [CentralRepoOps](https://github.github.com/gh-aw/patterns/central-repo-ops/)
+> *Opérations coordonnées sur plusieurs repositories*
+
+- **Inquisition multi-repos** — Un repo central orchestre la détection d'ingrédients hérétiques dans tous les repos de l'organisation et ouvre des issues de purification dans chacun
+- **Propagation du Dogme** — Un orchestrateur déploie le fichier `SACRED_INGREDIENTS.yaml` mis à jour dans tous les services Marabou
+
+### 📈 [Monitoring](https://github.github.com/gh-aw/patterns/monitoring/) / [ProjectOps](https://github.github.com/gh-aw/patterns/project-ops/)
+> *Tableau de bord vivant sur l'état du projet*
+
+- **Tableau des péchés capitaux** — Met à jour automatiquement un GitHub Project avec les issues taguées `hérésie`, classées par gravité doctrinale
+- **Thermomètre de sainteté** — Publie chaque semaine un statut de projet reflétant le ratio bugs/features : `🟢 Le Dogme est respecté` / `🔴 L'hérésie progresse`
+
+### 🎭 [Orchestration](https://github.github.com/gh-aw/patterns/orchestration/)
+> *Un orchestrateur qui dispatche plusieurs workers spécialisés*
+
+- **Grand Concile** — Sur `workflow_dispatch`, un orchestrateur analyse tous les ingrédients en débat dans les issues ouvertes, puis dispatche un worker de bénédiction ou d'excommunication pour chacun
+
+### 🔬 [ResearchPlanAssignOps](https://github.github.com/gh-aw/patterns/research-plan-assign-ops/)
+> *Research → Plan → Assign : de la découverte au code mergé*
+
+- **Veille hérétique** — Chaque jour un agent scrute les nouvelles tendances pizzas sur les discussions GitHub de l'écosystème, rédige un rapport de menaces doctrinales, puis génère des issues de défense assignées à Copilot
+
+### 🏝️ [SideRepoOps](https://github.github.com/gh-aw/patterns/side-repo-ops/)
+> *Un repo secondaire isolé comme plan de contrôle*
+
+- **Temple Secret** — Un repo privé `marabou-conclave` contient les workflows sensibles (gestion des secrets sacrés, rotation des clés de bénédiction) et opère silencieusement sur le repo principal
+
+### 📋 [SpecOps](https://github.github.com/gh-aw/patterns/spec-ops/)
+> *Générer des spécifications et vérifier leur implémentation*
+
+- **Codex Pizzarum** — Sur `/spec`, génère automatiquement la spécification technique complète d'un nouveau rituel en respectant les conventions du Dogme Fromager
+
+### ✅ [TaskOps](https://github.github.com/gh-aw/patterns/task-ops/)
+> *Décomposer des issues complexes en sous-tâches gérables*
+
+- **Décomposition liturgique** — Sur une issue feature complexe (`Mode Pénitence Suprême`), décompose automatiquement en sous-tâches assignées à Copilot : `BlessingRitual`, `ExpiationMode`, `AudioService`
+
+### 🧪 [TrialOps](https://github.github.com/gh-aw/patterns/trial-ops/)
+> *Tester des workflows en isolation sans affecter le repo*
+
+- **Chambre de simulation** — Permet de tester le `champignon-detector` ou le `confessionnal-automatique` avec des données factices sans polluer les vraies issues du projet
+
+---
+
 ## Ressources
 
 - [GitHub Agentic Workflows — site officiel](https://github.github.com/gh-aw/)
