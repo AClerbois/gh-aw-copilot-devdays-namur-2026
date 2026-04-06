@@ -114,6 +114,50 @@ gh aw run <nom-du-workflow>
 
 ---
 
+## Prérequis — Configurer le secret `COPILOT_GITHUB_TOKEN`
+
+Avant qu'un agentic workflow puisse s'exécuter, il faut créer un secret GitHub Actions contenant un PAT avec accès Copilot. Sans cette configuration, le job `agent` échoue avec :
+
+```
+Error: Authentication failed
+```
+
+Le `GITHUB_TOKEN` injecté automatiquement par GitHub Actions **n'a pas** accès à l'API Copilot. Un token **séparé** est obligatoire.
+
+### Étape 1 — Créer un PAT avec la permission Copilot
+
+Ouvre ce lien (pré-rempli avec le bon nom et la permission) :
+
+**https://github.com/settings/personal-access-tokens/new?name=COPILOT_GITHUB_TOKEN&description=GitHub+Agentic+Workflows+-+Copilot+engine+authentication&user_copilot_requests=read**
+
+Vérifie avant de générer :
+1. **Resource owner** = ton compte personnel (pas une organisation)
+2. **Permissions → Account permissions → Copilot Requests = Read**
+3. Clique **Generate token** et copie la valeur
+
+### Étape 2 — Enregistrer le PAT comme secret Actions
+
+Via le CLI (méthode recommandée) :
+
+```bash
+gh aw secrets set COPILOT_GITHUB_TOKEN --value "<colle-ton-pat-ici>"
+```
+
+Via l'interface GitHub :
+1. Va dans **Settings → Secrets and variables → Actions** du repository
+2. **New repository secret** → Nom : `COPILOT_GITHUB_TOKEN`, Valeur : ton PAT
+3. Sauvegarde
+
+### Étape 3 — Relancer le workflow
+
+```bash
+gh aw run daily-repo-status
+```
+
+> ⚠️ Sans ce secret, tous les agentic workflows échoueront dès le job `agent`, même si le workflow est syntaxiquement correct et compilé.
+
+---
+
 ## Créer un workflow via prompt
 
 La façon la plus rapide de créer un agentic workflow est de soumettre un prompt à un agent IA — que ce soit depuis l'interface web GitHub, VS Code Agent Mode, ou n'importe quel agent de code.

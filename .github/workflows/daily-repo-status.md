@@ -1,9 +1,9 @@
 ---
 description: |
-  This workflow creates daily repo status reports. It gathers recent repository
-  activity (issues, PRs, discussions, releases, code changes) and generates
-  engaging GitHub issues with productivity insights, community highlights,
-  and project recommendations.
+  Ce workflow crée des rapports quotidiens sur l'état du dépôt. Il rassemble l'activité récente
+  (issues, PRs, discussions, releases, changements de code) et génère des issues GitHub
+  engageantes avec des insights de productivité, des temps forts de la communauté
+  et des recommandations pour le projet.
 
 on:
   schedule: daily
@@ -18,41 +18,41 @@ network: defaults
 
 tools:
   github:
-    # If in a public repo, setting `lockdown: false` allows
-    # reading issues, pull requests and comments from 3rd-parties
-    # If in a private repo this has no particular effect.
+    # Dans un dépôt public, `lockdown: false` permet de lire les issues,
+    # PRs et commentaires venant de tiers.
+    # Dans un dépôt privé, cela n'a pas d'effet particulier.
     lockdown: false
-    min-integrity: none # This workflow is allowed to examine and comment on any issues
+    min-integrity: none # Ce workflow est autorisé à examiner et commenter toutes les issues
 
 safe-outputs:
   mentions: false
   allowed-github-references: []
   create-issue:
-    title-prefix: "[repo-status] "
-    labels: [report, daily-status]
+    title-prefix: "[rapport-quotidien] "
+    labels: [rapport, statut-quotidien]
     close-older-issues: true
 source: githubnext/agentics/workflows/daily-repo-status.md@7c7feb61a52b662eb2089aa2945588b7a200d404
 ---
 
-# Daily Repo Status
+# Rapport Quotidien du Dépôt
 
-Create an upbeat daily status report for the repo as a GitHub issue.
+Crée un rapport quotidien positif sur l'état du dépôt sous forme d'issue GitHub.
 
-## What to include
+## Ce qu'il faut inclure
 
-- Recent repository activity (issues, PRs, discussions, releases, code changes)
-- Progress tracking, goal reminders and highlights
-- Project status and recommendations
-- Actionable next steps for maintainers
+- Activité récente du dépôt (issues, PRs, discussions, releases, changements de code)
+- Suivi de progression, rappels des objectifs et points marquants
+- État du projet et recommandations
+- Prochaines étapes concrètes pour les mainteneurs
 
 ## Style
 
-- Be positive, encouraging, and helpful 🌟
-- Use emojis moderately for engagement
-- Keep it concise - adjust length based on actual activity
+- Sois positif, encourageant et utile 🌟
+- Utilise les emojis avec modération pour l'engagement
+- Reste concis — adapte la longueur à l'activité réelle
 
-## Process
+## Processus
 
-1. Gather recent activity from the repository
-2. Study the repository, its issues and its pull requests
-3. Create a new GitHub issue with your findings and insights
+1. Rassemble l'activité récente du dépôt
+2. Étudie le dépôt, ses issues et ses pull requests
+3. Crée une nouvelle issue GitHub avec tes conclusions et insights
