@@ -24,12 +24,64 @@ Cette session explore **[GitHub Agentic Workflows](https://github.github.com/gh-
 ```
 .
 ├── AGENTS.md                          # Contexte du projet pour les agents IA
+├── .gitattributes                     # Marque les .lock.yml comme générés
+├── .github/
+│   └── workflows/                     # ⚙️ Workflows opérationnels (*.md + *.lock.yml compilés)
+├── fake-issues/                       # Issues fictives de démo pour le projet Marabou
 ├── slides/
 │   └── GitHub Copilot Dev Days - Agentic Workflows.pptx
-└── examples/                          # à venir — exemples live de la session
+└── workflows/                         # 📝 Sources de référence — exemples live de la session
+    └── prix-pizzerias-namur.md        # Workflow créé pendant la session
 ```
 
 > 💡 Le fichier `AGENTS.md` décrit le contexte du projet aux agents IA. Il est lui-même maintenu par un agentic workflow — c'est la mise en abyme de la session.
+
+---
+
+## Où placer les fichiers workflow ?
+
+Les agentic workflows reposent sur **deux types de fichiers** :
+
+| Fichier | Rôle | Emplacement |
+|---|---|---|
+| `<nom>.md` | Source en langage naturel — tu édites ce fichier | `.github/workflows/<nom>.md` |
+| `<nom>.lock.yml` | Fichier GitHub Actions compilé — **ne jamais éditer à la main** | `.github/workflows/<nom>.lock.yml` |
+
+### Flux de travail
+
+```
+1. Crée ou adapte ton workflow source  →  .github/workflows/<nom>.md
+                                             ↓
+2. Compile pour générer le YAML          gh aw compile <nom>
+                                             ↓
+3. Commit les deux fichiers              git add .github/workflows/<nom>.md
+                                                   .github/workflows/<nom>.lock.yml
+                                         git commit -m "add <nom> workflow"
+                                         git push
+                                             ↓
+4. Déclenche manuellement (optionnel)    gh aw run <nom>
+```
+
+> ⚠️ Les fichiers `*.lock.yml` sont auto-générés. Le fichier `.gitattributes` les marque comme tels (`linguist-generated=true merge=ours`) pour éviter les conflits de merge.
+
+### Exemples de ce repo
+
+Le dossier [`workflows/`](workflows/) à la racine contient les fichiers source créés **pendant la session** — pratiques pour les lire et les adapter. Pour les rendre opérationnels dans **ton** repository :
+
+```bash
+# 1. Copie le fichier source dans ton repo
+cp workflows/prix-pizzerias-namur.md chemin/vers/ton-repo/.github/workflows/
+
+# 2. Compile
+cd chemin/vers/ton-repo
+gh aw compile prix-pizzerias-namur
+
+# 3. Commit & push
+git add .github/workflows/prix-pizzerias-namur.md \
+        .github/workflows/prix-pizzerias-namur.lock.yml
+git commit -m "add pizza price workflow"
+git push
+```
 
 ---
 
